@@ -5,9 +5,71 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  margin-top: 200px;
+  background-color: rgb(131, 131, 212);
+  width: 500px;
+  padding-top: 30px;
+  color: white;
+}
+
+.response-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  background-color: rgb(131, 131, 212);
+  width: 400px;
+}
+
+input{
+  border-radius: 15px;
+  font-size: 18px;
+  border: none;
+  padding: 10px;
+  margin-bottom: 20px;
+
+  transition: 0.2s;
+}
+
+input:hover{
+  background-color: rgb(131, 131, 212);
+  color: white;
+
+  transition: 0.2s;
+}
+
+button{
+  border-radius: 15px;
+  font-size: 18px;
+  padding: 10px 20px;
+  background-color: rgb(70, 70, 130);
+  color: white;
+  cursor: pointer;
+  border: none;
+
+  transition: 0.2s;
+}
+
+button:hover{
+  background-color: rgb(50, 50, 110);
+
+  transition: 0.2s;
 }

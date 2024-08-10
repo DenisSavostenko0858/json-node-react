@@ -31,7 +31,8 @@ const App = () => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className='form'>
+                <h2>Поиск</h2>
                 <input 
                     type="email" 
                     value={email} 
@@ -45,15 +46,26 @@ const App = () => {
                     onChange={(e) => setNumber(e.target.value)} 
                     placeholder="Number (optional)" 
                 />
-                <button type="submit">Submit</button>
+                <button type="submit">Отправить</button>
+                
+                {loading && <p>Loading...</p>}
+                {error && <p style={{ color: 'red' }}>{error}</p>}
+                
+                <ul>
+                    {results.map((user, index) => (
+                        <li style={{color: 'white', textAlign: 'center'}} key={index}>{user.email} - {user.number}</li>
+                    ))}
+                </ul>
+                <button 
+                    type="submit"
+                    style={{marginBottom: '10px', marginTop: '20px'}}
+                    onClick={() => {
+                        window.location.reload(); 
+                    }}
+                    >
+                        Перезагрузить форму
+                </button>
             </form>
-            {loading && <p>Loading...</p>}
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-            <ul>
-                {results.map((user, index) => (
-                    <li style={{color: 'green'}} key={index}>{user.email} - {user.number}</li>
-                ))}
-            </ul>
         </div>
     );
 };

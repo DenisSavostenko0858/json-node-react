@@ -1,14 +1,13 @@
-import express from 'express';
-import cors from 'cors';
-import bodyParser from 'body-parser';
+import express, { Request, Response } from 'express';
 
-const app = express();
-const PORT = 5000;
+const router = express.Router();
 
-app.use(cors());
-app.use(bodyParser.json());
+interface User {
+    email: string;
+    number: string;
+}
 
-const users = [
+const users: User[] = [
     { email: 'jim@gmail.com', number: '221122' },
     { email: 'jam@gmail.com', number: '830347' },
     { email: 'john@gmail.com', number: '221122' },
@@ -18,10 +17,10 @@ const users = [
     { email: 'jill@gmail.com', number: '822286' }
 ];
 
-let currentRequest = null;
+let currentRequest: NodeJS.Timeout | null = null;
 
-app.post('/search', (req, res) => {
-    const { email, number } = req.body;
+router.post('/search', (req: Request, res: Response) => {
+    const { email, number }: { email?: string; number?: string } = req.body;
 
     console.log('Полученные данные: ', req.body); 
 
@@ -46,6 +45,4 @@ app.post('/search', (req, res) => {
     }, 5000);
 });
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
+export default router;
